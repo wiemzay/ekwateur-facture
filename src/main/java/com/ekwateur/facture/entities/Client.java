@@ -4,8 +4,26 @@ import java.util.List;
 
 public class Client {
     private String referenceClient;
-    private List<TypeEnergie> typesEnergie;
+    private List<Energie> energies;
+    private double consommationElectricite;
+    private double consommationGaz;
 
+
+    public double getConsommationElectricite() {
+        return consommationElectricite;
+    }
+
+    public void setConsommationElectricite(double consommationElectricite) {
+        this.consommationElectricite = consommationElectricite;
+    }
+
+    public double getConsommationGaz() {
+        return consommationGaz;
+    }
+
+    public void setConsommationGaz(double consommationGaz) {
+        this.consommationGaz = consommationGaz;
+    }
 
     public String getReferenceClient() {
         return referenceClient;
@@ -15,19 +33,19 @@ public class Client {
         this.referenceClient = referenceClient;
     }
 
-    public List<TypeEnergie> getTypesEnergie() {
-        return typesEnergie;
+    public List<Energie> getEnergies() {
+        return energies;
     }
 
-    public void setTypesEnergie(List<TypeEnergie> typesEnergie) {
-        this.typesEnergie = typesEnergie;
+    public void setEnergies(List<Energie> energies) {
+        this.energies = energies;
     }
 
     @Override
     public String toString() {
         return "Client{" +
                 "referenceClient='" + referenceClient + '\'' +
-                ", typesEnergie=" + typesEnergie +
+                ", energies=" + energies +
                 '}';
     }
 }
