@@ -1,7 +1,11 @@
 package com.ekwateur.facture.entities;
 
+import java.util.List;
+
 public class Client {
     private String referenceClient;
+    private List<TypeEnergie> typesEnergie;
+
 
     public String getReferenceClient() {
         return referenceClient;
@@ -11,10 +15,19 @@ public class Client {
         this.referenceClient = referenceClient;
     }
 
+    public List<TypeEnergie> getTypesEnergie() {
+        return typesEnergie;
+    }
+
+    public void setTypesEnergie(List<TypeEnergie> typesEnergie) {
+        this.typesEnergie = typesEnergie;
+    }
+
     @Override
     public String toString() {
         return "Client{" +
                 "referenceClient='" + referenceClient + '\'' +
+                ", typesEnergie=" + typesEnergie +
                 '}';
     }
 }
