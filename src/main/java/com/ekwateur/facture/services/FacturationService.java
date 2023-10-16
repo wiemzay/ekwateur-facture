@@ -15,50 +15,33 @@ public class FacturationService {
         double total = 0;
 
         if (client instanceof ClientParticulier) {
-            for (Energie energie : client.getEnergies()) {
-                if (energie.getTypeEnergie().equals(TypeEnergie.ELECTRICITE)) {
-                    total += energie.getConsommation() * ELECTRICITE_PARTICULIER_RATE;
-
-                }
-                if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
-                        total += energie.getConsommation() * GAZ_PARTICULIER_RATE;
-
-                }
-            }
+            total = getTotal(client, total, ELECTRICITE_PARTICULIER_RATE, GAZ_PARTICULIER_RATE);
         } else if (client instanceof ClientPro){
             if (((ClientPro) client).getCa()>= 1000000)
             {
-                for (Energie energie : client.getEnergies()) {
-
-
-                    if (energie.getTypeEnergie().equals(TypeEnergie.ELECTRICITE)) {
-                        total += energie.getConsommation() * ELECTRICITE_PRO_HIGH_CA_RATE;
-
-                    }
-                    if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
-                        total += energie.getConsommation() * GAZ_PRO_HIGH_CA_RATE;
-
-                    }
-                }
+                total = getTotal(client, total, ELECTRICITE_PRO_HIGH_CA_RATE, GAZ_PRO_HIGH_CA_RATE);
             } else {
-                for (Energie energie : client.getEnergies()) {
-
-
-                    if (energie.getTypeEnergie().equals(TypeEnergie.ELECTRICITE)) {
-                        total += energie.getConsommation() * ELECTRICITE_PRO_LOW_CA_RATE;
-
-                    }
-                    if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
-                        total += energie.getConsommation() * GAZ_PRO_LOW_CA_RATE;
-
-                    }
-                }
+                total = getTotal(client, total, ELECTRICITE_PRO_LOW_CA_RATE, GAZ_PRO_LOW_CA_RATE);
             }
 
         }
 
 
 
+        return total;
+    }
+
+    private double getTotal(Client client, double total, double electriciteParticulierRate, double gazParticulierRate) {
+        for (Energie energie : client.getEnergies()) {
+            if (energie.getTypeEnergie().equals(TypeEnergie.ELECTRICITE)) {
+                total += energie.getConsommation() * electriciteParticulierRate;
+
+            }
+            if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
+                    total += energie.getConsommation() * gazParticulierRate;
+
+            }
+        }
         return total;
     }
 
