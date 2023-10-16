@@ -35,10 +35,10 @@ public class FacturationService {
         for (Energie energie : client.getEnergies()) {
             if (energie.getTypeEnergie().equals(TypeEnergie.ELECTRICITE)) {
                 total += energie.getConsommation() * electriciteParticulierRate;
-
-            }
-            if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
+                System.out.println(energie.getTypeEnergie() + " : for client" + client.getReferenceClient() );
+            } else if (energie.getTypeEnergie().equals(TypeEnergie.GAZ)) {
                     total += energie.getConsommation() * gazParticulierRate;
+                System.out.println(energie.getTypeEnergie() + " : for client" + client.getReferenceClient() );
 
             }
         }
